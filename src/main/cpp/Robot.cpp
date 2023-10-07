@@ -1885,11 +1885,11 @@ void Robot::TeleopPeriodic()
 {
 //  limelight->TurnOnLimelight();
 
-  // SmartDashboard::PutNumber("FL Mag", swerveDrive->FLModule->magEncoder->GetAbsolutePosition());
-  // SmartDashboard::PutNumber("FR Mag", swerveDrive->FRModule->magEncoder->GetAbsolutePosition());
-  // SmartDashboard::PutNumber("BL Mag", swerveDrive->BLModule->magEncoder->GetAbsolutePosition());
-  // SmartDashboard::PutNumber("BR Mag", swerveDrive->BRModule->magEncoder->GetAbsolutePosition());
-  // SmartDashboard::PutNumber("Pigeon", _pigeon.GetYaw());
+  SmartDashboard::PutNumber("FL Mag Encoder", swerveDrive->FLModule->magEncoder->GetAbsolutePosition());
+  SmartDashboard::PutNumber("FR Mag Encoder", swerveDrive->FRModule->magEncoder->GetAbsolutePosition());
+  SmartDashboard::PutNumber("BL Mag Encoder", swerveDrive->BLModule->magEncoder->GetAbsolutePosition());
+  SmartDashboard::PutNumber("BR Mag Encoder", swerveDrive->BRModule->magEncoder->GetAbsolutePosition());
+  SmartDashboard::PutNumber("Pigeon", _pigeon.GetYaw());
 
   if (claw->ObjectInClaw() || claw->ObjectInClawSubstation())
     lights->SetLED("green");
