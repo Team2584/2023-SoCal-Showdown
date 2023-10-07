@@ -2173,7 +2173,7 @@ void Robot::TeleopPeriodic()
           seeCubesEntry.Set(true);
           conePlaceYLimelightGoal= 0.91;
           conePlaceXLimelightGoal = 0.075;
-          conePlaceElevatorGoal = 72;  
+          conePlaceElevatorGoal = HIGH_CUBE_ELEVATOR_HEIGHT;  
           placingHigh = true;
           doneWithPoleAlignment = false;
           turnt = false;
@@ -2186,7 +2186,7 @@ void Robot::TeleopPeriodic()
           seeCubesEntry.Set(true);
           conePlaceYLimelightGoal= 0.91;
           conePlaceXLimelightGoal = 0.075;
-          conePlaceElevatorGoal = 48;  
+          conePlaceElevatorGoal = MID_CUBE_ELEVATOR_HEIGHT;  
           placingHigh = false;
           doneWithPoleAlignment = false;
           turnt = false;
@@ -2198,13 +2198,13 @@ void Robot::TeleopPeriodic()
           //Prepare High
           placingHigh = true;
           currentDriverSection = LIFTINGTOPLACEOBJECT;
-          conePlaceElevatorGoal = 72;  
+          conePlaceElevatorGoal = HIGH_CUBE_ELEVATOR_HEIGHT;  
         }
         else if (xbox_Drive2->GetAButtonPressed())
         {
           //Prepare Mid
           placingHigh = false;
-          conePlaceElevatorGoal = 48;  
+          conePlaceElevatorGoal = MID_CUBE_ELEVATOR_HEIGHT;  
           currentDriverSection = LIFTINGTOPLACEOBJECT;
         }
       }
@@ -2218,13 +2218,13 @@ void Robot::TeleopPeriodic()
           {
             conePlaceXLimelightGoal = 0.19; 
             conePlaceYLimelightGoal = -0.07;
-            conePlaceElevatorGoal = 49;  
+            conePlaceElevatorGoal = MID_CONE_ELEVATOR_HEIGHT;  
           }
           else
           {
             conePlaceXLimelightGoal = 0.19; 
             conePlaceYLimelightGoal = -0.055;
-            conePlaceElevatorGoal = 49;  
+            conePlaceElevatorGoal = MID_CONE_ELEVATOR_HEIGHT;  
           }
           placingHigh = false;
           doneWithPoleAlignment = false;
@@ -2240,13 +2240,13 @@ void Robot::TeleopPeriodic()
           {
             conePlaceXLimelightGoal = 0.19; 
             conePlaceYLimelightGoal = -0.07;
-            conePlaceElevatorGoal = 82;  
+            conePlaceElevatorGoal = HIGH_CONE_ELEVATOR_HEIGHT;  
           }
           else
           {
             conePlaceXLimelightGoal = 0.19; 
             conePlaceYLimelightGoal = -0.055;
-            conePlaceElevatorGoal = 82;  
+            conePlaceElevatorGoal = HIGH_CONE_ELEVATOR_HEIGHT;  
           }
           placingHigh = true;
           doneWithPoleAlignment = false;
@@ -2258,14 +2258,14 @@ void Robot::TeleopPeriodic()
         {
           //Prepare High
           placingHigh = true;
-          conePlaceElevatorGoal = 82;  
+          conePlaceElevatorGoal = HIGH_CONE_ELEVATOR_HEIGHT;  
           currentDriverSection = LIFTINGTOPLACEOBJECT;
         }
         else if (xbox_Drive2->GetAButtonPressed())
         {
           //Prepare Mid
           placingHigh = false;
-          conePlaceElevatorGoal = 47;  
+          conePlaceElevatorGoal = MID_CONE_ELEVATOR_HEIGHT;  
           currentDriverSection = LIFTINGTOPLACEOBJECT;
         }
       }
@@ -2507,12 +2507,12 @@ void Robot::TeleopPeriodic()
         if (claw->MagEncoderReading() < 0.3)
           elevatorLift->MoveElevatorPercent(0);
         else
-          elevatorLift->SetElevatorHeightPID(69, elapsedTime);
+          elevatorLift->SetElevatorHeightPID(SUBSTATION_ELEVATOR_HEIGHT, elapsedTime);
 
         if (!coneInClaw && elevatorLift->winchEncoderReading() > 65)
           coneInClaw = claw->ObjectInClaw() || claw->ObjectInClawSubstation();
 //1.37
-        claw->PIDWrist(1.37, elapsedTime);
+        claw->PIDWrist(SUBSTATION_WRIST_ANGLE, elapsedTime);
         if (!clawFinishedOpening)
           clawFinishedOpening = claw->OpenClaw(elapsedTime);
         else if (coneInClaw)
