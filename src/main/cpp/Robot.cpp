@@ -210,7 +210,7 @@ void Robot::RobotInit()
  */
 void Robot::RobotPeriodic()
 {
-  // limelight->TurnOnLimelight();
+  limelight->TurnOnLimelight();
   // limelight->getTargetX();
   // limelight->getTargetY();
   connectedEntry.Set(true);
